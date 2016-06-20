@@ -1,0 +1,11 @@
+@import 'settings';
+
+.main-container {
+  padding: $padding-default;
+  display: flex;
+}
+
+.vertical-center {
+  align-items: center;
+  justify-content: center;
+}
