@@ -8,6 +8,7 @@ import browsersync from 'browser-sync';
 import rename from 'gulp-rename';
 import uglify from 'gulp-uglify';
 import concat from 'gulp-concat';
+import pug from 'gulp-pug';
 
 
 const dirs = {
@@ -18,16 +19,21 @@ const dirs = {
 const sassPaths = {
   client: `${dirs.client}/**/*.scss`,
   build: `${dirs.build}/css/`
-}
+};
 
 const jsPaths = {
   client: [`${dirs.client}/scss/**/*.js`],
   build: `${dirs.build}/js/`
-}
+};
 
 const imgPaths = {
   client: [`${dirs.client}/img/**/*.*`],
   build: `${dirs.build}/img/`
+};
+
+const pugPaths = {
+  client: [`${dirs.client}/pug/**/*.pug`],
+  build: `${dirs.build}/js/`
 }
 
 gulp.task('browsersync', () => {
@@ -37,6 +43,13 @@ gulp.task('browsersync', () => {
       index: 'index.html'
     }
   })
+})
+
+gulp.task('pug', () => {
+  return gulp.src(pugPaths.client)
+    .pipe(pug({client: true}))
+    .pipe(concat("templates.js"))
+    .pipe(gulp.dest(pugPaths.build))
 })
 
 gulp.task('sass', () => {
@@ -63,13 +76,10 @@ gulp.task('img', () => {
 })
 
 gulp.task('build', () => {
-  return sequence(['sass', 'js', 'img'])
+  return sequence(['pug', 'sass', 'js', 'img'])
 })
 
 gulp.task('default', ['build', 'browsersync'], () => {
   gulp.watch(sassPaths.client, ['sass']);
   gulp.watch(jsPaths.client, ['js']);
 })
-
-
-
