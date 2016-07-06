@@ -1,0 +1,26 @@
+/*
+  ITCSS - RSCSS
+  --------------------------------------------------------SETTINGS-------------------------------------------------
+             ------------------------------------------TOOLS------------------------------------------
+                   -----------------------------------GENERIC-----------------------------------
+                           ----------------------------BASE----------------------------
+                                ---------------------OBJECTS---------------------
+                                     --------------COMPONENTS--------------
+                                               -------TRUMPS-------
+*/
+//SETTINGS
+@import "settings/settings";
+
+//TOOLS
+@import "tools/mixins";
+@import "tools/animations";
+@import "tools/flex";
+
+//GENERIC
+@import "generic/generic";
+
+//OBJECTS
+@import "objects/alignments";
+@import "objects/backgrounds";
+@import "objects/buttons";
+@import "objects/containers";

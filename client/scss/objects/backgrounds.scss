@@ -1,0 +1,30 @@
+@import '../settings/settings';
+@import "../tools/mixins";
+
+.sky-gradient {
+  background: url("../img/background-sky.svg") no-repeat center center;
+  background-size: cover;
+  // &:before {
+  //   content: '';
+  //   width: 100vw;
+  //   height: 100vh;
+  //   background: rgba(0,0,0,0.54);
+  // }
+}
+
+.hexa {
+  background: url("../img/background-hexa.svg") repeat center center;
+  @include animate(background-diagonal-reverse, 30s);
+}
+
+.main-logo {
+  max-width: 25vw;
+}
+
+.full-background {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  z-index: -1;
+}

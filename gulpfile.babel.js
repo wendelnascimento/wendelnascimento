@@ -33,22 +33,31 @@ const imgPaths = {
 
 const pugPaths = {
   client: [`${dirs.client}/pug/**/*.pug`],
-  build: `${dirs.build}/js/`
-}
+  build: `${dirs.build}/`
+};
+
+const fontPaths = {
+  client: `${dirs.client}/fonts/**/*.*`,
+  build: `${dirs.build}/fonts/`
+};
 
 gulp.task('browsersync', () => {
   browsersync({
     server: {
-      baseDir: './',
+      baseDir: './build',
       index: 'index.html'
     }
   })
 })
 
+gulp.task('fonts', () => {
+  return gulp.src(fontPaths.client)
+    .pipe(gulp.dest(fontPaths.build))
+})
+
 gulp.task('pug', () => {
   return gulp.src(pugPaths.client)
-    .pipe(pug({client: true}))
-    .pipe(concat("templates.js"))
+    .pipe(pug())
     .pipe(gulp.dest(pugPaths.build))
 })
 
@@ -76,10 +85,12 @@ gulp.task('img', () => {
 })
 
 gulp.task('build', () => {
-  return sequence(['pug', 'sass', 'js', 'img'])
+  return sequence(['pug', 'fonts', 'sass', 'js', 'img'])
 })
 
 gulp.task('default', ['build', 'browsersync'], () => {
   gulp.watch(sassPaths.client, ['sass']);
   gulp.watch(jsPaths.client, ['js']);
+  gulp.watch(imgPaths.client, ['img']);
+  gulp.watch(pugPaths.client, ['pug']);
 })

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1042 523" enable-background="new 0 0 1042 523" xml:space="preserve">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="521.4411" y1="-52.1063" x2="520.4411" y2="658.8937">
+	<stop offset="0%" stop-color="#feb46b" stop-opacity=".5">
+    <animate attributeName="stop-color" values="#feb46b;#00020e;#00102a;#002955;#075890;#2d7bac;#7cabbf;#c0c3b8;#e4c6a4;#feb46b;#372147;#59275a;#8f2055;#a61a37;#f50b16;#feb46b" dur="30s" repeatCount="indefinite" />
+  </stop>
+  <stop offset="100%" stop-color="#feb46b" stop-opacity=".5">
+    <animate attributeName="stop-color" values="#feb46b;#00020e;#00102a;#002955;#075890;#2d7bac;#7cabbf;#c0c3b8;#e4c6a4;#feb46b;#372147;#59275a;#8f2055;#a61a37;#f50b16;#feb46b" dur="30s" repeatCount="indefinite" />
+    <animate attributeName="offset" values=".95;.80;.60;.40;.20;0;.20;.25;.35;.40;.55;.60;.75;.80;.90;.95;.100" dur="14s" repeatCount="indefinite" />
+  </stop>
+	<!-- <stop offset="0%" stop-color="lightblue" stop-opacity=".5">
+    <animate attributeName="stop-color" values="lightblue;blue;red;red;black;red;red;purple;lightblue" dur="14s" repeatCount="indefinite" />
+  </stop>
+  <stop offset="100%" stop-color="lightblue" stop-opacity=".5">
+    <animate attributeName="stop-color" values="lightblue;orange;purple;purple;black;purple;purple;blue;lightblue" dur="14s" repeatCount="indefinite" />
+    <animate attributeName="offset" values=".95;.80;.60;.40;.20;0;.20;.40;.60;.80;.95" dur="14s" repeatCount="indefinite" />
+  </stop> -->
+</linearGradient>
+<rect fill="url(#SVGID_1_)" width="1042" height="523">
+</rect>
+</svg>

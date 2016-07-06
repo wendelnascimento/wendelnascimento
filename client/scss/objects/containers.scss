@@ -1,0 +1,31 @@
+@import '../settings/settings';
+
+.container {
+  display: flex;
+
+  &.--main {
+    height: 100%;
+  }
+
+  &.--round {
+    width: 50vw;
+    background: rgba(255,255,255,0.24);
+    border-left: 1px dashed $black;
+    border-right: 1px dashed $black;
+  }
+
+  &.row {
+    flex-direction: row;
+    &.align-center {
+      justify-content: center;
+    }
+  }
+
+  &.column {
+    flex-direction: column;
+    &.align-center {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

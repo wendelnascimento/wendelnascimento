@@ -1,0 +1,23 @@
+@import '../settings/settings';
+
+.button {
+  padding: $default-padding-button;
+  color: $logo-purple;
+  &:hover {
+    color: $logo-blue;
+  }
+
+  &.round {
+   border: 3px solid $logo-purple;
+   border-radius: 50%;
+   transition : border-color .7s ease-in-out;
+  //  &:hover {
+  //    border-color: $logo-blue;
+  //  }
+  }
+
+  &.margin {
+    margin: $default-margin-button;
+  }
+
+}
