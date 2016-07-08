@@ -33,7 +33,7 @@ const imgPaths = {
 
 const pugPaths = {
   client: [`${dirs.client}/pug/**/*.pug`],
-  build: `${dirs.build}/`
+  build: `./`
 };
 
 const fontPaths = {
@@ -44,7 +44,7 @@ const fontPaths = {
 gulp.task('browsersync', () => {
   browsersync({
     server: {
-      baseDir: './build',
+      baseDir: './',
       index: 'index.html'
     }
   })
@@ -87,6 +87,7 @@ gulp.task('img', () => {
 gulp.task('build', () => {
   return sequence(['pug', 'fonts', 'sass', 'js', 'img'])
 })
+
 
 gulp.task('default', ['build', 'browsersync'], () => {
   gulp.watch(sassPaths.client, ['sass']);
