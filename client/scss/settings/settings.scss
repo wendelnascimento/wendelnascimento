@@ -1,4 +1,4 @@
-$preloader-bg: #fafafa;
+$body-bg: #fafafa;
 
 $padding-default: 16px;
 
@@ -7,6 +7,9 @@ $white: #FFF;
 $black: #000;
 $logo-purple: #4B2C86;
 $logo-blue: #488FCC;
+$light-purple: #5e35b1;
+
+$preloader-bg: $light-purple;
 
 //BUTTON
 $default-border-button: #fff;

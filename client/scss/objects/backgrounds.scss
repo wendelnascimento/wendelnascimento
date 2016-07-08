@@ -1,24 +1,28 @@
 @import '../settings/settings';
 @import "../tools/mixins";
 
-.sky-gradient {
-  background: url("../img/background-sky.svg") no-repeat center center;
+// .sky-gradient {
+//   background: url("../img/background-sky.svg") no-repeat center center;
+//   background-size: cover;
+//   // &:before {
+//   //   content: '';
+//   //   width: 100vw;
+//   //   height: 100vh;
+//   //   background: rgba(0,0,0,0.54);
+//   // }
+// }
+
+.hexa-bg {
+  background: url("../img/background-hexa.svg") no-repeat center center $preloader-bg;
   background-size: cover;
-  // &:before {
-  //   content: '';
-  //   width: 100vw;
-  //   height: 100vh;
-  //   background: rgba(0,0,0,0.54);
+  //@include animate(background-diagonal-reverse, 30s);
+  // &.animated {
+  //   @include animate(logo-colors-switch, 30s);
   // }
 }
 
-.hexa {
-  background: url("../img/background-hexa.svg") repeat center center;
-  @include animate(background-diagonal-reverse, 30s);
-}
-
 .main-logo {
-  max-width: 25vw;
+  max-width: 30vw;
 }
 
 .full-background {
@@ -27,4 +31,21 @@
   height: 100vh;
   top: 0;
   z-index: -1;
+}
+
+.hexa {
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    z-index: -1;
+    background: url("../img/hexagon.svg") no-repeat center center;
+    // @include animate(rotate-origin-center, 60s);
+  }
+}
+
+.scale-down-up {
+  @include animate(rotate-origin-center, 5s);
 }

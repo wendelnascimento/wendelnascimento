@@ -1,22 +1,72 @@
+@import "mixins";
+@import "../settings/settings";
+
 @keyframes background-diagonal-reverse {
   0% {
     background-position: 0vw -0vh;
-    filter: hue-rotate(0deg);
   }
   25% {
     background-position: 25vw -25vh;
-    filter: hue-rotate(72deg);
   }
   50% {
     background-position: 50vw -50vh;
-    filter: hue-rotate(216deg);
   }
   75% {
     background-position: 25vw -25vh;
-    filter: hue-rotate(288deg);
   }
   100% {
     background-position: 0vw -0vh;
-    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes rotate-origin-center {
+  transform-origin: center;
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(72deg);
+  }
+  50% {
+    transform: rotate(144deg);
+  }
+  75% {
+    transform: rotate(216deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scale-down-up {
+  0% {
+    transform: scale(1,1);
+  }
+  25% {
+    transform: scale(1.2,1.2);
+  }
+  50% {
+    transform: scale(1.5,1.5)
+  }
+  75% {
+    transform: scale(2,2)
+  }
+  100% {
+    transform: scale(1.2,1.2)
+  }
+}
+
+@keyframes logo-colors-switch {
+  0% {
+    background-color: $preloader-bg;
+  }
+  33% {
+    background-color: $logo-blue;
+  }
+  66% {
+    background-color: $logo-purple;
+  }
+  100% {
+    background-color: $preloader-bg;
   }
 }
