@@ -82,3 +82,8 @@
     background-size: 200%;
   }
 }
+
+  .animate-fadeOut {
+    transition: opacity .5s ease-out;
+    opacity: 0;
+  }

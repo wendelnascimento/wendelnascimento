@@ -5,3 +5,12 @@
 .front {
   z-index: 1;
 }
+
+.hidden {
+  display: none;
+} 
+
+.max-top {
+  position: absolute;
+  top: 0;
+}

@@ -1,17 +1,11 @@
-doctype html
-html(lang="pt-BR")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1")
-    title Wendel Nascimento
-    link(rel="stylesheet" href="build/css/style.css")
-  body
-    div(class="full-background hexa-bg")
-    div(class="full-background front over-hidden")
-      section(class="container hexa --main row align-center", id="intro")
-        div(class="container column align-center flex-25")
-          img(src="build/img/logo-full.svg", class="main-logo", alt="Logo Wendel Nascimento")
-          a(class="button round margin", id="intro-button", href="#main")
-            i(class="fa fa-chevron-down")
-    script(src="https://use.fontawesome.com/c9bd327fe1.js", async)
-    script(src="build/js/intro.min.js", async)
+include header.pug
+div(class="full-background hexa-bg")
+div(class="full-background front over-hidden max-top")
+  section(class="container hexa --main row align-center", id="intro")
+    div(class="container column align-center flex-25")
+      img(src="build/img/logo-full.svg", class="main-logo", alt="Logo Wendel Nascimento")
+      a(class="button round margin", id="intro-button", href="#about")
+        i(class="fa fa-chevron-down")
+include nav.pug
+section(id="about", class="full-background")
+script(src="build/js/main.min.js", async)
