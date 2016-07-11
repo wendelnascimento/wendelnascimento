@@ -123,6 +123,22 @@
   100% {
     background-color: #5e35b1; } }
 
+@-webkit-keyframes intro-background-grow {
+  0% {
+    background-size: 100%; }
+  25% {
+    background-size: 90%; }
+  100% {
+    background-size: 200%; } }
+
+@keyframes intro-background-grow {
+  0% {
+    background-size: 100%; }
+  25% {
+    background-size: 90%; }
+  100% {
+    background-size: 200%; } }
+
 .flex-1 {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 1%;
@@ -655,6 +671,12 @@ h1 {
 .vertical-center {
   max-width: 50%; }
 
+.over-hidden {
+  overflow: hidden; }
+
+.front {
+  z-index: 1; }
+
 .hexa-bg {
   background: url("../img/background-hexa.svg") no-repeat center center #5e35b1;
   background-size: cover; }
@@ -677,6 +699,14 @@ h1 {
   left: 0;
   z-index: -1;
   background: url("../img/hexagon.svg") no-repeat center center; }
+
+.hexa.animate-grow:before {
+  -webkit-transition: -webkit-transform 1s ease-in-out;
+  transition: -webkit-transform 1s ease-in-out;
+  transition: transform 1s ease-in-out;
+  transition: transform 1s ease-in-out, -webkit-transform 1s ease-in-out;
+  -webkit-transform: scale(10, 10);
+          transform: scale(10, 10); }
 
 .scale-down-up {
   -webkit-animation-name: rotate-origin-center;
@@ -743,6 +773,12 @@ h1 {
           -ms-flex-pack: center;
               justify-content: center; }
 
+.over-hidden {
+  overflow: hidden; }
+
+.front {
+  z-index: 1; }
+
 @font-face {
   font-family: "Melbourne";
   src: url("../fonts/Melbourne.woff") format("woff"); }
@@ -775,6 +811,12 @@ h1 {
 .vertical-center {
   max-width: 50%; }
 
+.over-hidden {
+  overflow: hidden; }
+
+.front {
+  z-index: 1; }
+
 .hexa-bg {
   background: url("../img/background-hexa.svg") no-repeat center center #5e35b1;
   background-size: cover; }
@@ -797,6 +839,14 @@ h1 {
   left: 0;
   z-index: -1;
   background: url("../img/hexagon.svg") no-repeat center center; }
+
+.hexa.animate-grow:before {
+  -webkit-transition: -webkit-transform 1s ease-in-out;
+  transition: -webkit-transform 1s ease-in-out;
+  transition: transform 1s ease-in-out;
+  transition: transform 1s ease-in-out, -webkit-transform 1s ease-in-out;
+  -webkit-transform: scale(10, 10);
+          transform: scale(10, 10); }
 
 .scale-down-up {
   -webkit-animation-name: rotate-origin-center;
@@ -980,6 +1030,22 @@ h1 {
   100% {
     background-color: #5e35b1; } }
 
+@-webkit-keyframes intro-background-grow {
+  0% {
+    background-size: 100%; }
+  25% {
+    background-size: 90%; }
+  100% {
+    background-size: 200%; } }
+
+@keyframes intro-background-grow {
+  0% {
+    background-size: 100%; }
+  25% {
+    background-size: 90%; }
+  100% {
+    background-size: 200%; } }
+
 .flex-1 {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 1%;
@@ -1480,3 +1546,9 @@ h1 {
       -ms-flex: 0 0 100%;
           flex: 0 0 100%; }
 
+
+.over-hidden {
+  overflow: hidden; }
+
+.front {
+  z-index: 1; }

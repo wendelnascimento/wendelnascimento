@@ -9,6 +9,7 @@ import rename from 'gulp-rename';
 import uglify from 'gulp-uglify';
 import concat from 'gulp-concat';
 import pug from 'gulp-pug';
+import babel from 'gulp-babel';
 
 
 const dirs = {
@@ -22,7 +23,7 @@ const sassPaths = {
 };
 
 const jsPaths = {
-  client: [`${dirs.client}/scss/**/*.js`],
+  client: [`${dirs.client}/js/**/*.js`],
   build: `${dirs.build}/js/`
 };
 
@@ -74,6 +75,7 @@ gulp.task('js', () => {
   return gulp.src(jsPaths.client)
     .pipe(gulp.dest(jsPaths.build))
     .pipe(rename({suffix: '.min'}))
+    .pipe(babel())
     .pipe(uglify())
     .pipe(gulp.dest(jsPaths.build))
     .pipe(browsersync.reload({stream: true}))
