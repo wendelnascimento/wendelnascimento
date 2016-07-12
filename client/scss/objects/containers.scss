@@ -3,6 +3,10 @@
 .container {
   display: flex;
 
+  /* IE FIX */
+  min-height: 100%;
+  height: 1px;
+
   &.--main {
     height: 100%;
   }
