@@ -1,1 +1,0 @@
-"use strict";function hexagonFill(){hexagon.classList.add("animate-grow")}var button=document.getElementById("intro-button"),hexagon=document.getElementById("intro");button.addEventListener("click",hexagonFill,!1);

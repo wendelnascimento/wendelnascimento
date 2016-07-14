@@ -1,21 +1,17 @@
 'use strict';
 
 import gulp from 'gulp';
-import sass from 'gulp-sass';
-import autoprefixer from 'gulp-autoprefixer';
 import sequence from 'run-sequence';
 import browsersync from 'browser-sync';
-import rename from 'gulp-rename';
-import uglify from 'gulp-uglify';
-import concat from 'gulp-concat';
 import pug from 'gulp-pug';
-import babel from 'gulp-babel';
 import gutil from 'gulp-util';
+import webpack from 'webpack';
+import webpackConfig from './webpack.config.js';
 
 
 const dirs = {
-	client: 'client',
-	build: 'build',
+	client: 'assets',
+	build: 'build/assets',
 	node_modules: 'node_modules'
 };
 
@@ -28,7 +24,7 @@ const sassPaths = {
 };
 
 const jsPaths = {
-	client: [`${dirs.client}/js/**/*.js`],
+	client: [`${dirs.client}/js/index.js`],
 	build: `${dirs.build}/js/`
 };
 
@@ -70,29 +66,45 @@ gulp.task('pug', () => {
     .on('error', 
 		(err) => {
 			gutil.log(gutil.colors.red('[Compilation Error]'));
-			gutil.log(gutil.color.red(err.message));
+			gutil.log(gutil.colors.red(err.message));
 		})
     .pipe(gulp.dest(pugPaths.build));
 });
 
-gulp.task('sass', () => {
-	return gulp.src(sassPaths.client)
-    .pipe(sass.sync().on('error', sass.logError))
-    .pipe(autoprefixer())
-    .pipe(concat('style.css'))
-    .pipe(gulp.dest(sassPaths.build))
-    .pipe(browsersync.reload({stream: true}));
+gulp.task('webpack', (callback) => {
+	let myConfig = Object.create(webpackConfig);
+	webpack(myConfig, function(err, stats) {
+		if(err) throw new gutil.PluginError('webpack:build', err);
+		gutil.log('[webpack:build]', stats.toString({
+			colors: true
+		}));
+		callback();
+	});
 });
 
-gulp.task('js', () => {
-	return gulp.src(jsPaths.client)
-		.pipe(concat('main.js', {newLine: ';'}))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(babel())
-    .pipe(uglify())
-    .pipe(gulp.dest(jsPaths.build))
-    .pipe(browsersync.reload({stream: true}));
+gulp.task('reload', () => {
+	return browsersync.reload({stream: true});
 });
+
+// gulp.task('sass', () => {
+// 	return gulp.src(sassPaths.client)
+//     .pipe(sass.sync().on('error', sass.logError))
+//     .pipe(autoprefixer())
+//     .pipe(concat('style.css'))
+//     .pipe(gulp.dest(sassPaths.build))
+//     .pipe(browsersync.reload({stream: true}));
+// });
+
+// gulp.task('js', () => {
+// 	return gulp.src(jsPaths.client)
+// 		.pipe(webpack( require('./webpack.config.js') ))
+// 		// .pipe(concat('index.js', {newLine: ';'}))
+//     // .pipe(rename({suffix: '.min'}))
+//     // .pipe(babel())
+//     // .pipe(uglify())
+//     .pipe(gulp.dest(jsPaths.build))
+//     .pipe(browsersync.reload({stream: true}));
+// });
 
 gulp.task('img', () => {
 	return gulp.src(imgPaths.client)
@@ -100,13 +112,13 @@ gulp.task('img', () => {
 });
 
 gulp.task('build', () => {
-	return sequence(['pug', 'fonts', 'sass', 'js', 'img']);
+	return sequence(['webpack', 'pug', 'fonts', 'img']);
 });
 
 
 gulp.task('default', ['build', 'browsersync'], () => {
-	gulp.watch(sassPaths.client, ['sass']);
-	gulp.watch(jsPaths.client, ['js']);
-	gulp.watch(imgPaths.client, ['img']);
-	gulp.watch(pugPaths.client, ['pug']);
+	gulp.watch(sassPaths.client, ['webpack', 'reload']);
+	gulp.watch(jsPaths.client, ['webpack', 'reload']);
+	gulp.watch(imgPaths.client, ['img', 'pug', 'reload']);
+	gulp.watch(pugPaths.client, ['pug', 'reload']);
 });
