@@ -2,8 +2,10 @@ doctype html
 html(lang="pt-BR")
   include head.pug
   body
-    div(class="container --main row align-center", id="intro")
+    div(class="container --main column align-center", id="intro")
       include ../img/logo-full.svg
+      h2
+        a(class="button margin" id="intro-button", href="#about") Continuar
     //- div(class="full-background hexa-bg")
     //- div(class="full-background front over-hidden max-top")
     //-   section(class="container hexa --main column align-center", id="intro")
