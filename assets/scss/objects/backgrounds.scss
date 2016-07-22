@@ -48,3 +48,10 @@
 // .scale-down-up {
 //   @include animate(rotate-origin-center, 5s);
 // }
+
+#canvas-lines {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  max-width: 100%;
+}

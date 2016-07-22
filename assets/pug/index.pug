@@ -3,16 +3,10 @@ html(lang="pt-BR")
   include head.pug
   body
     div(class="container --main column align-center", id="intro")
+      canvas#canvas-lines
       include ../img/logo-full.svg
       h2
         a(class="button margin" id="intro-button", href="#about") Continuar
-    //- div(class="full-background hexa-bg")
-    //- div(class="full-background front over-hidden max-top")
-    //-   section(class="container hexa --main column align-center", id="intro")
-    //-     div(class="container column align-center flex-25")
-    //-       img(src="build/assets/img/logo-full.svg", class="main-logo", alt="Logo Wendel Nascimento")
-    //-       a(class="button round margin", id="intro-button", href="#about")
-    //-         i(class="fa fa-chevron-down")
     include nav.pug
     section(id="about", class="full-background")
     include script.pug

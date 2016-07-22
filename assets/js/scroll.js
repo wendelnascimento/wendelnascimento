@@ -3,7 +3,7 @@ let scroll = {
 		window.addEventListener('scroll', () => window.requestAnimationFrame(fn));
 	},
 
-	to: (el, {duration = 400, easing = 'linear'} = {}) => {
+	to: (el, {duration = 500, easing = 'linear'} = {}) => {
 		el = el instanceof Array ? el[0] : el;
 
 		let target = el.offsetTop;

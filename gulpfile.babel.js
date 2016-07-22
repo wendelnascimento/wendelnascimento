@@ -24,7 +24,7 @@ const sassPaths = {
 };
 
 const jsPaths = {
-	client: [`${dirs.client}/js/index.js`],
+	client: [`${dirs.client}/**/*.js`],
 	build: `${dirs.build}/js/`
 };
 
