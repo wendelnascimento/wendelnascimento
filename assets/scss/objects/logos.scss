@@ -1,6 +1,10 @@
 #intro {
-  >#logo-full {
+  > #logo-full {
     width: 50vw;
     padding-bottom: 50px;
+  }
+  > .title {
+    position: relative;
+    z-index: 1;
   }
 }
