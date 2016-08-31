@@ -1,8 +1,25 @@
 @import '../settings/settings';
 
 #main-menu {
-    position: fixed;
+    position: absolute;
     height: 60px;
     width: 100vw;
-    background: $light-purple;
+    bottom: 0;
+    max-width: 100%;
+    // background: $light-purple;
+    >.list {
+        margin: 0;
+        padding: 0;
+        .item {
+            display: inline;
+            padding: 0px 10px;
+            >a { 
+                line-height: 60px;
+                color: $logo-purple;
+                &:hover {
+                    color: $logo-blue;
+                }
+            }
+        }
+    }
 }

@@ -71,8 +71,8 @@
 	introCanvas.initAnimation();
 	introCanvas.addListeners();
 
-	var intro = new _ScrollOnClick2.default('#intro-button', '#about', 'click', true);
-	intro.eventListeners();
+	var scroller = new _ScrollOnClick2.default('.scroll');
+	scroller.init();
 
 /***/ },
 /* 1 */
@@ -95,62 +95,38 @@
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	var ScrollOnClick = function () {
-		function ScrollOnClick(elem, scroll, eventListener, elemDefaultAction) {
+		function ScrollOnClick(className) {
 			_classCallCheck(this, ScrollOnClick);
 
-			this._elem = document.querySelector(elem);
-			this._scroll = document.querySelector(scroll);
-			this._eventListener = eventListener;
-			this._elemDefaultAction = elemDefaultAction;
+			this._className = className;
 		}
 
 		_createClass(ScrollOnClick, [{
-			key: 'eventListeners',
-			value: function eventListeners() {
-				var _this = this;
+			key: 'init',
+			value: function init() {
+				var elements = document.querySelectorAll(this._className);
+				for (var i = 0; i < elements.length; i++) {
+					elements[i].addEventListener('click', this.onClick);
+				}
+			}
+		}, {
+			key: 'onClick',
+			value: function onClick() {
+				var target = event.target;
 
-				this._elem.addEventListener(this._eventListener, function () {
-					if (_this._elemDefaultAction) event.preventDefault();
-					_scroll2.default.to(_this._scroll);
-				}, false);
-			}
-		}, {
-			key: 'scroll',
-			get: function get() {
-				return this._scroll;
-			},
-			set: function set(elem) {
-				this._scroll = elem;
-			}
-		}, {
-			key: 'elemDefaultAction',
-			get: function get() {
-				return this._elemDefaultAction;
-			},
-			set: function set(value) {
-				this._elemDefaultAction = value;
+				event.stopPropagation();
+				event.preventDefault();
+
+				if (!(target instanceof HTMLAnchorElement)) {
+					target = target.closest('a');
+				}
+
+				_scroll2.default.to(document.querySelector(target.getAttribute('href')));
 			}
 		}]);
 
 		return ScrollOnClick;
 	}();
-
-	// let button = document.getElementById('intro-button');
-	// let hexagon = document.getElementById('intro');
-	// // let about = document.getElementById('about');
-
-	// let hexagonFill = element => {
-	// 	event.preventDefault();
-	// 	hexagon.classList.add('animate-grow');
-	// };
-
-	// let scrollAbout = () => {
-
-	// };
-
-	// button.addEventListener('click', hexagonFill, false);
-	// hexagon.addEventListener('transitionend', scrollAbout, false);
-
 
 	exports.default = ScrollOnClick;
 
@@ -174,7 +150,7 @@
 			var _ref = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
 			var _ref$duration = _ref.duration;
-			var duration = _ref$duration === undefined ? 500 : _ref$duration;
+			var duration = _ref$duration === undefined ? 200 : _ref$duration;
 			var _ref$easing = _ref.easing;
 			var easing = _ref$easing === undefined ? 'linear' : _ref$easing;
 
@@ -239,7 +215,7 @@
 
 
 	// module
-	exports.push([module.id, "/*\r\n  ITCSS - RSCSS\r\n  --------------------------------------------------------SETTINGS-------------------------------------------------\r\n             ------------------------------------------TOOLS------------------------------------------\r\n                   -----------------------------------GENERIC-----------------------------------\r\n                           ----------------------------BASE----------------------------\r\n                                ---------------------OBJECTS---------------------\r\n                                     --------------COMPONENTS--------------\r\n                                               -------TRUMPS-------\r\n*/\n@keyframes background-diagonal-reverse {\n  0% {\n    background-position: 0vw -0vh; }\n  25% {\n    background-position: 25vw -25vh; }\n  50% {\n    background-position: 50vw -50vh; }\n  75% {\n    background-position: 25vw -25vh; }\n  100% {\n    background-position: 0vw -0vh; } }\n\n@keyframes rotate-origin-center {\n  transform-origin: center;\n  0% {\n    transform: rotate(0deg); }\n  25% {\n    transform: rotate(72deg); }\n  50% {\n    transform: rotate(144deg); }\n  75% {\n    transform: rotate(216deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n@keyframes scale-down-up {\n  0% {\n    transform: scale(1, 1); }\n  25% {\n    transform: scale(1.2, 1.2); }\n  50% {\n    transform: scale(1.5, 1.5); }\n  75% {\n    transform: scale(2, 2); }\n  100% {\n    transform: scale(1.2, 1.2); } }\n\n@keyframes logo-colors-switch {\n  0% {\n    background-color: #5e35b1; }\n  33% {\n    background-color: #488FCC; }\n  66% {\n    background-color: #4B2C86; }\n  100% {\n    background-color: #5e35b1; } }\n\n@keyframes intro-background-grow {\n  0% {\n    background-size: 100%; }\n  25% {\n    background-size: 90%; }\n  100% {\n    background-size: 200%; } }\n\n.animate-fadeOut {\n  transition: opacity .5s ease-out;\n  opacity: 0; }\n\n.flex-1 {\n  flex: 0 0 1%; }\n\n.flex-2 {\n  flex: 0 0 2%; }\n\n.flex-3 {\n  flex: 0 0 3%; }\n\n.flex-4 {\n  flex: 0 0 4%; }\n\n.flex-5 {\n  flex: 0 0 5%; }\n\n.flex-6 {\n  flex: 0 0 6%; }\n\n.flex-7 {\n  flex: 0 0 7%; }\n\n.flex-8 {\n  flex: 0 0 8%; }\n\n.flex-9 {\n  flex: 0 0 9%; }\n\n.flex-10 {\n  flex: 0 0 10%; }\n\n.flex-11 {\n  flex: 0 0 11%; }\n\n.flex-12 {\n  flex: 0 0 12%; }\n\n.flex-13 {\n  flex: 0 0 13%; }\n\n.flex-14 {\n  flex: 0 0 14%; }\n\n.flex-15 {\n  flex: 0 0 15%; }\n\n.flex-16 {\n  flex: 0 0 16%; }\n\n.flex-17 {\n  flex: 0 0 17%; }\n\n.flex-18 {\n  flex: 0 0 18%; }\n\n.flex-19 {\n  flex: 0 0 19%; }\n\n.flex-20 {\n  flex: 0 0 20%; }\n\n.flex-21 {\n  flex: 0 0 21%; }\n\n.flex-22 {\n  flex: 0 0 22%; }\n\n.flex-23 {\n  flex: 0 0 23%; }\n\n.flex-24 {\n  flex: 0 0 24%; }\n\n.flex-25 {\n  flex: 0 0 25%; }\n\n.flex-26 {\n  flex: 0 0 26%; }\n\n.flex-27 {\n  flex: 0 0 27%; }\n\n.flex-28 {\n  flex: 0 0 28%; }\n\n.flex-29 {\n  flex: 0 0 29%; }\n\n.flex-30 {\n  flex: 0 0 30%; }\n\n.flex-31 {\n  flex: 0 0 31%; }\n\n.flex-32 {\n  flex: 0 0 32%; }\n\n.flex-33 {\n  flex: 0 0 33%; }\n\n.flex-34 {\n  flex: 0 0 34%; }\n\n.flex-35 {\n  flex: 0 0 35%; }\n\n.flex-36 {\n  flex: 0 0 36%; }\n\n.flex-37 {\n  flex: 0 0 37%; }\n\n.flex-38 {\n  flex: 0 0 38%; }\n\n.flex-39 {\n  flex: 0 0 39%; }\n\n.flex-40 {\n  flex: 0 0 40%; }\n\n.flex-41 {\n  flex: 0 0 41%; }\n\n.flex-42 {\n  flex: 0 0 42%; }\n\n.flex-43 {\n  flex: 0 0 43%; }\n\n.flex-44 {\n  flex: 0 0 44%; }\n\n.flex-45 {\n  flex: 0 0 45%; }\n\n.flex-46 {\n  flex: 0 0 46%; }\n\n.flex-47 {\n  flex: 0 0 47%; }\n\n.flex-48 {\n  flex: 0 0 48%; }\n\n.flex-49 {\n  flex: 0 0 49%; }\n\n.flex-50 {\n  flex: 0 0 50%; }\n\n.flex-51 {\n  flex: 0 0 51%; }\n\n.flex-52 {\n  flex: 0 0 52%; }\n\n.flex-53 {\n  flex: 0 0 53%; }\n\n.flex-54 {\n  flex: 0 0 54%; }\n\n.flex-55 {\n  flex: 0 0 55%; }\n\n.flex-56 {\n  flex: 0 0 56%; }\n\n.flex-57 {\n  flex: 0 0 57%; }\n\n.flex-58 {\n  flex: 0 0 58%; }\n\n.flex-59 {\n  flex: 0 0 59%; }\n\n.flex-60 {\n  flex: 0 0 60%; }\n\n.flex-61 {\n  flex: 0 0 61%; }\n\n.flex-62 {\n  flex: 0 0 62%; }\n\n.flex-63 {\n  flex: 0 0 63%; }\n\n.flex-64 {\n  flex: 0 0 64%; }\n\n.flex-65 {\n  flex: 0 0 65%; }\n\n.flex-66 {\n  flex: 0 0 66%; }\n\n.flex-67 {\n  flex: 0 0 67%; }\n\n.flex-68 {\n  flex: 0 0 68%; }\n\n.flex-69 {\n  flex: 0 0 69%; }\n\n.flex-70 {\n  flex: 0 0 70%; }\n\n.flex-71 {\n  flex: 0 0 71%; }\n\n.flex-72 {\n  flex: 0 0 72%; }\n\n.flex-73 {\n  flex: 0 0 73%; }\n\n.flex-74 {\n  flex: 0 0 74%; }\n\n.flex-75 {\n  flex: 0 0 75%; }\n\n.flex-76 {\n  flex: 0 0 76%; }\n\n.flex-77 {\n  flex: 0 0 77%; }\n\n.flex-78 {\n  flex: 0 0 78%; }\n\n.flex-79 {\n  flex: 0 0 79%; }\n\n.flex-80 {\n  flex: 0 0 80%; }\n\n.flex-81 {\n  flex: 0 0 81%; }\n\n.flex-82 {\n  flex: 0 0 82%; }\n\n.flex-83 {\n  flex: 0 0 83%; }\n\n.flex-84 {\n  flex: 0 0 84%; }\n\n.flex-85 {\n  flex: 0 0 85%; }\n\n.flex-86 {\n  flex: 0 0 86%; }\n\n.flex-87 {\n  flex: 0 0 87%; }\n\n.flex-88 {\n  flex: 0 0 88%; }\n\n.flex-89 {\n  flex: 0 0 89%; }\n\n.flex-90 {\n  flex: 0 0 90%; }\n\n.flex-91 {\n  flex: 0 0 91%; }\n\n.flex-92 {\n  flex: 0 0 92%; }\n\n.flex-93 {\n  flex: 0 0 93%; }\n\n.flex-94 {\n  flex: 0 0 94%; }\n\n.flex-95 {\n  flex: 0 0 95%; }\n\n.flex-96 {\n  flex: 0 0 96%; }\n\n.flex-97 {\n  flex: 0 0 97%; }\n\n.flex-98 {\n  flex: 0 0 98%; }\n\n.flex-99 {\n  flex: 0 0 99%; }\n\n.flex-100 {\n  flex: 0 0 100%; }\n\n@font-face {\n  font-family: \"Melbourne\";\n  src: url(" + __webpack_require__(6) + ") format(\"woff\"); }\n\n@font-face {\n  font-family: \"Melbourne-bold\";\n  font-weight: bold;\n  src: url(" + __webpack_require__(7) + ") format(\"woff\"); }\n\n@font-face {\n  font-family: \"Melbourne-light\";\n  font-weight: light;\n  src: url(" + __webpack_require__(8) + ") format(\"woff\"); }\n\nhtml {\n  width: 100%;\n  height: 100%; }\n\nbody {\n  background: #fafafa;\n  margin: 0;\n  width: 100%;\n  height: 100%;\n  font-family: 'Melbourne-bold';\n  color: #4B2C86;\n  scroll-behavior: smooth; }\n\nh1 {\n  margin: 0; }\n\na {\n  text-decoration: none; }\n\n.vertical-center {\n  max-width: 50%; }\n\n#intro > #logo-full {\n  width: 50vw;\n  padding-bottom: 50px; }\n\n#intro > .title {\n  position: relative;\n  z-index: 1; }\n\n.button {\n  padding: 8px;\n  color: #4B2C86; }\n  .button:hover {\n    color: #488FCC; }\n  .button.round {\n    border: 1px solid #4B2C86;\n    border-radius: 50%;\n    transition: border-color .7s ease-in-out; }\n  .button.margin {\n    margin: 1em; }\n  .button#intro-button {\n    font-family: 'Melbourne-light';\n    text-transform: uppercase;\n    letter-spacing: 5px; }\n\n.container {\n  display: flex;\n  /* IE FIX */\n  min-height: 100%;\n  height: 1px; }\n  .container.\\--main {\n    height: 100%; }\n  .container.\\--round {\n    width: 50vw;\n    background: rgba(255, 255, 255, 0.24);\n    border-left: 1px dashed #000;\n    border-right: 1px dashed #000; }\n  .container.row {\n    flex-direction: row; }\n    .container.row.align-center {\n      justify-content: center; }\n  .container.column {\n    flex-direction: column; }\n    .container.column.align-center {\n      align-items: center;\n      justify-content: center; }\n\n.full-background {\n  width: 100vw;\n  height: 100vh;\n  max-width: 100%;\n  z-index: -1; }\n\n#main-menu {\n  position: fixed;\n  height: 60px;\n  width: 100vw;\n  background: #5e35b1; }\n\n#canvas-lines {\n  position: absolute;\n  top: 0;\n  z-index: 0;\n  max-width: 100%;\n  left: 0; }\n\n.over-hidden {\n  overflow: hidden; }\n\n.front {\n  z-index: 1; }\n\n.hidden {\n  display: none; }\n\n.max-top {\n  position: absolute;\n  top: 0; }\n", ""]);
+	exports.push([module.id, "/*\r\n  ITCSS - RSCSS\r\n  --------------------------------------------------------SETTINGS-------------------------------------------------\r\n             ------------------------------------------TOOLS------------------------------------------\r\n                   -----------------------------------GENERIC-----------------------------------\r\n                           ----------------------------BASE----------------------------\r\n                                ---------------------OBJECTS---------------------\r\n                                     --------------COMPONENTS--------------\r\n                                               -------TRUMPS-------\r\n*/\n@keyframes background-diagonal-reverse {\n  0% {\n    background-position: 0vw -0vh; }\n  25% {\n    background-position: 25vw -25vh; }\n  50% {\n    background-position: 50vw -50vh; }\n  75% {\n    background-position: 25vw -25vh; }\n  100% {\n    background-position: 0vw -0vh; } }\n\n@keyframes rotate-origin-center {\n  transform-origin: center;\n  0% {\n    transform: rotate(0deg); }\n  25% {\n    transform: rotate(72deg); }\n  50% {\n    transform: rotate(144deg); }\n  75% {\n    transform: rotate(216deg); }\n  100% {\n    transform: rotate(360deg); } }\n\n@keyframes scale-down-up {\n  0% {\n    transform: scale(1, 1); }\n  25% {\n    transform: scale(1.2, 1.2); }\n  50% {\n    transform: scale(1.5, 1.5); }\n  75% {\n    transform: scale(2, 2); }\n  100% {\n    transform: scale(1.2, 1.2); } }\n\n@keyframes logo-colors-switch {\n  0% {\n    background-color: #5e35b1; }\n  33% {\n    background-color: #488FCC; }\n  66% {\n    background-color: #4B2C86; }\n  100% {\n    background-color: #5e35b1; } }\n\n@keyframes intro-background-grow {\n  0% {\n    background-size: 100%; }\n  25% {\n    background-size: 90%; }\n  100% {\n    background-size: 200%; } }\n\n.animate-fadeOut {\n  transition: opacity .5s ease-out;\n  opacity: 0; }\n\n.flex-1 {\n  flex: 0 0 1%; }\n\n.flex-2 {\n  flex: 0 0 2%; }\n\n.flex-3 {\n  flex: 0 0 3%; }\n\n.flex-4 {\n  flex: 0 0 4%; }\n\n.flex-5 {\n  flex: 0 0 5%; }\n\n.flex-6 {\n  flex: 0 0 6%; }\n\n.flex-7 {\n  flex: 0 0 7%; }\n\n.flex-8 {\n  flex: 0 0 8%; }\n\n.flex-9 {\n  flex: 0 0 9%; }\n\n.flex-10 {\n  flex: 0 0 10%; }\n\n.flex-11 {\n  flex: 0 0 11%; }\n\n.flex-12 {\n  flex: 0 0 12%; }\n\n.flex-13 {\n  flex: 0 0 13%; }\n\n.flex-14 {\n  flex: 0 0 14%; }\n\n.flex-15 {\n  flex: 0 0 15%; }\n\n.flex-16 {\n  flex: 0 0 16%; }\n\n.flex-17 {\n  flex: 0 0 17%; }\n\n.flex-18 {\n  flex: 0 0 18%; }\n\n.flex-19 {\n  flex: 0 0 19%; }\n\n.flex-20 {\n  flex: 0 0 20%; }\n\n.flex-21 {\n  flex: 0 0 21%; }\n\n.flex-22 {\n  flex: 0 0 22%; }\n\n.flex-23 {\n  flex: 0 0 23%; }\n\n.flex-24 {\n  flex: 0 0 24%; }\n\n.flex-25 {\n  flex: 0 0 25%; }\n\n.flex-26 {\n  flex: 0 0 26%; }\n\n.flex-27 {\n  flex: 0 0 27%; }\n\n.flex-28 {\n  flex: 0 0 28%; }\n\n.flex-29 {\n  flex: 0 0 29%; }\n\n.flex-30 {\n  flex: 0 0 30%; }\n\n.flex-31 {\n  flex: 0 0 31%; }\n\n.flex-32 {\n  flex: 0 0 32%; }\n\n.flex-33 {\n  flex: 0 0 33%; }\n\n.flex-34 {\n  flex: 0 0 34%; }\n\n.flex-35 {\n  flex: 0 0 35%; }\n\n.flex-36 {\n  flex: 0 0 36%; }\n\n.flex-37 {\n  flex: 0 0 37%; }\n\n.flex-38 {\n  flex: 0 0 38%; }\n\n.flex-39 {\n  flex: 0 0 39%; }\n\n.flex-40 {\n  flex: 0 0 40%; }\n\n.flex-41 {\n  flex: 0 0 41%; }\n\n.flex-42 {\n  flex: 0 0 42%; }\n\n.flex-43 {\n  flex: 0 0 43%; }\n\n.flex-44 {\n  flex: 0 0 44%; }\n\n.flex-45 {\n  flex: 0 0 45%; }\n\n.flex-46 {\n  flex: 0 0 46%; }\n\n.flex-47 {\n  flex: 0 0 47%; }\n\n.flex-48 {\n  flex: 0 0 48%; }\n\n.flex-49 {\n  flex: 0 0 49%; }\n\n.flex-50 {\n  flex: 0 0 50%; }\n\n.flex-51 {\n  flex: 0 0 51%; }\n\n.flex-52 {\n  flex: 0 0 52%; }\n\n.flex-53 {\n  flex: 0 0 53%; }\n\n.flex-54 {\n  flex: 0 0 54%; }\n\n.flex-55 {\n  flex: 0 0 55%; }\n\n.flex-56 {\n  flex: 0 0 56%; }\n\n.flex-57 {\n  flex: 0 0 57%; }\n\n.flex-58 {\n  flex: 0 0 58%; }\n\n.flex-59 {\n  flex: 0 0 59%; }\n\n.flex-60 {\n  flex: 0 0 60%; }\n\n.flex-61 {\n  flex: 0 0 61%; }\n\n.flex-62 {\n  flex: 0 0 62%; }\n\n.flex-63 {\n  flex: 0 0 63%; }\n\n.flex-64 {\n  flex: 0 0 64%; }\n\n.flex-65 {\n  flex: 0 0 65%; }\n\n.flex-66 {\n  flex: 0 0 66%; }\n\n.flex-67 {\n  flex: 0 0 67%; }\n\n.flex-68 {\n  flex: 0 0 68%; }\n\n.flex-69 {\n  flex: 0 0 69%; }\n\n.flex-70 {\n  flex: 0 0 70%; }\n\n.flex-71 {\n  flex: 0 0 71%; }\n\n.flex-72 {\n  flex: 0 0 72%; }\n\n.flex-73 {\n  flex: 0 0 73%; }\n\n.flex-74 {\n  flex: 0 0 74%; }\n\n.flex-75 {\n  flex: 0 0 75%; }\n\n.flex-76 {\n  flex: 0 0 76%; }\n\n.flex-77 {\n  flex: 0 0 77%; }\n\n.flex-78 {\n  flex: 0 0 78%; }\n\n.flex-79 {\n  flex: 0 0 79%; }\n\n.flex-80 {\n  flex: 0 0 80%; }\n\n.flex-81 {\n  flex: 0 0 81%; }\n\n.flex-82 {\n  flex: 0 0 82%; }\n\n.flex-83 {\n  flex: 0 0 83%; }\n\n.flex-84 {\n  flex: 0 0 84%; }\n\n.flex-85 {\n  flex: 0 0 85%; }\n\n.flex-86 {\n  flex: 0 0 86%; }\n\n.flex-87 {\n  flex: 0 0 87%; }\n\n.flex-88 {\n  flex: 0 0 88%; }\n\n.flex-89 {\n  flex: 0 0 89%; }\n\n.flex-90 {\n  flex: 0 0 90%; }\n\n.flex-91 {\n  flex: 0 0 91%; }\n\n.flex-92 {\n  flex: 0 0 92%; }\n\n.flex-93 {\n  flex: 0 0 93%; }\n\n.flex-94 {\n  flex: 0 0 94%; }\n\n.flex-95 {\n  flex: 0 0 95%; }\n\n.flex-96 {\n  flex: 0 0 96%; }\n\n.flex-97 {\n  flex: 0 0 97%; }\n\n.flex-98 {\n  flex: 0 0 98%; }\n\n.flex-99 {\n  flex: 0 0 99%; }\n\n.flex-100 {\n  flex: 0 0 100%; }\n\n@font-face {\n  font-family: \"Raleway\";\n  src: url(" + __webpack_require__(6) + ") format(\"truetype\"); }\n\n@font-face {\n  font-family: \"Raleway-bold\";\n  font-weight: bold;\n  src: url(" + __webpack_require__(7) + ") format(\"truetype\"); }\n\n@font-face {\n  font-family: \"Raleway-light\";\n  font-weight: light;\n  src: url(" + __webpack_require__(8) + ") format(\"truetype\"); }\n\nhtml {\n  width: 100%;\n  height: 100%; }\n\nbody {\n  background: #fafafa;\n  margin: 0;\n  width: 100%;\n  height: 100%;\n  font-family: 'Raleway-bold';\n  color: #4B2C86;\n  scroll-behavior: smooth; }\n\nh1 {\n  margin: 0; }\n\na {\n  text-decoration: none;\n  color: #488FCC; }\n\n.vertical-center {\n  max-width: 50%; }\n\n#intro > #logo-full {\n  width: 50vw;\n  padding-bottom: 50px; }\n\n#intro > .title {\n  position: relative;\n  z-index: 1; }\n\n.button {\n  padding: 8px;\n  color: #4B2C86; }\n  .button:hover {\n    color: #488FCC; }\n  .button.round {\n    border: 1px solid #4B2C86;\n    border-radius: 50%;\n    transition: border-color .7s ease-in-out; }\n  .button.margin {\n    margin: 1em; }\n  .button#intro-button {\n    font-size: 2rem; }\n\n.container {\n  display: flex;\n  /* IE FIX */\n  min-height: 100%;\n  height: 1px; }\n  .container.\\--main {\n    height: 100%; }\n  .container.\\--round {\n    width: 50vw;\n    background: rgba(255, 255, 255, 0.24);\n    border-left: 1px dashed #000;\n    border-right: 1px dashed #000; }\n  .container.row {\n    flex-direction: row; }\n    .container.row.align-center {\n      justify-content: center; }\n  .container.column {\n    flex-direction: column; }\n    .container.column.align-center {\n      align-items: center;\n      justify-content: center; }\n\n.full-background {\n  width: 100vw;\n  height: 100vh;\n  max-width: 100%;\n  z-index: -1; }\n\n#main-menu {\n  position: absolute;\n  height: 60px;\n  width: 100vw;\n  bottom: 0;\n  max-width: 100%; }\n  #main-menu > .list {\n    margin: 0;\n    padding: 0; }\n    #main-menu > .list .item {\n      display: inline;\n      padding: 0px 10px; }\n      #main-menu > .list .item > a {\n        line-height: 60px;\n        color: #4B2C86; }\n        #main-menu > .list .item > a:hover {\n          color: #488FCC; }\n\n#canvas-lines {\n  position: absolute;\n  top: 0;\n  z-index: 0;\n  max-width: 100%;\n  left: 0; }\n\n.over-hidden {\n  overflow: hidden; }\n\n.front {\n  z-index: 1; }\n\n.hidden {\n  display: none; }\n\n.max-top {\n  position: absolute;\n  top: 0; }\n", ""]);
 
 	// exports
 
@@ -304,19 +280,19 @@
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "assets/fonts/Melbourne.woff?e2b7636681ddbce13a8fef87e84cc3c1";
+	module.exports = __webpack_require__.p + "assets/fonts/Raleway-Regular.ttf?580d0778ad254335be45bf58bb449f43";
 
 /***/ },
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "assets/fonts/Melbourne-bold.woff?c76ccd37d908b52671ac6c4b9386e214";
+	module.exports = __webpack_require__.p + "assets/fonts/Raleway-bold.ttf?575e4317521b381ac94c0c8207c81979";
 
 /***/ },
 /* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "assets/fonts/Melbourne-light.woff?14d8da9ae18f88b259ee12faa83a7009";
+	module.exports = __webpack_require__.p + "assets/fonts/Raleway-light.ttf?b1bdea561f247adc2c904f5b24a07c51";
 
 /***/ },
 /* 9 */

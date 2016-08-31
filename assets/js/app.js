@@ -10,6 +10,6 @@ introCanvas.initContainer();
 introCanvas.initAnimation();
 introCanvas.addListeners();
 
-let intro = new ScrollOnClick('#intro-button', '#about', 'click', true);
-intro.eventListeners();
+let scroller = new ScrollOnClick('.scroll');
+scroller.init();
 
