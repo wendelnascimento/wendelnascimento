@@ -1,9 +1,14 @@
+var webpack = require("webpack");
+
 module.exports = {
 	entry: './assets/js/app.js',
 	output: {
 		path: './build',
-		filename: 'bundle.js'
+		filename: 'bundle.min.js'
 	},
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({minimize: true})
+  ],
 	module: {
 		loaders: [
 			{
