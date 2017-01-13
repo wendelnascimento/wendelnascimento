@@ -1,0 +1,33 @@
+/*
+  ITCSS - RSCSS
+  --------------------------------------------------------SETTINGS-------------------------------------------------
+             ------------------------------------------TOOLS------------------------------------------
+                   -----------------------------------GENERIC-----------------------------------
+                           ----------------------------BASE----------------------------
+                                ---------------------OBJECTS---------------------
+                                     --------------COMPONENTS--------------
+                                               -------TRUMPS-------
+*/
+//SETTINGS
+:global {
+  @import "./settings/settings";
+
+  //TOOLS
+  @import "./tools/mixins";
+  @import "./tools/animations";
+  @import "./tools/flex";
+
+  //GENERIC
+  @import "./generic/generic";
+
+  //OBJECTS
+  @import "./objects/alignments";
+  @import "./objects/logos";
+  @import "./objects/buttons";
+  @import "./objects/containers";
+  @import "./objects/mainMenu";
+  @import "./objects/backgrounds";
+
+  //TRUMPS
+  @import "./trumps/helpers";
+}
